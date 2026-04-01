@@ -1,0 +1,6 @@
+[build]
+  # O comando de build agora aponta para o caminho do seu main
+  cmd = "go build -o ./tmp/main ./cmd/server/main.go"
+  bin = "./tmp/main"
+  include_dir = ["cmd", "internal"]
+  pre_cmd = ["rm -rf ./tmp/main"]
