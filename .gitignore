@@ -32,7 +32,11 @@ go.work.sum
 # .vscode/
 
 # air
+/dev/data/db
+/dev/logs
+/dev/.env
 /tmp
 
 # devbox
 .devbox
+
