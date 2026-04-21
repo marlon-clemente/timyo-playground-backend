@@ -1,0 +1,28 @@
+version: "3"
+
+tasks:
+# ─── Migrações ────────────────────────────────────────────────────────────────
+  migrate:create:
+    desc: "Cria um novo par de arquivos SQL (ex: task migrate:create -- create_appointments_table)"
+    cmds:
+      - go run ./cmd/migrate create {{.CLI_ARGS}}
+
+  migrate:up:
+    desc: Aplica todas as migrações pendentes
+    cmds:
+      - go run ./cmd/migrate up
+
+  migrate:down:
+    desc: Reverte a última migração
+    cmds:
+      - go run ./cmd/migrate down 1
+
+  migrate:force:
+    desc: "Força uma versão específica se o banco ficar \"dirty\" (ex: task migrate:force -- 1)"
+    cmds:
+      - go run ./cmd/migrate force {{.CLI_ARGS}}
+
+  migrate:version:
+    desc: Mostra a versão atual da migração no banco
+    cmds:
+      - go run ./cmd/migrate version

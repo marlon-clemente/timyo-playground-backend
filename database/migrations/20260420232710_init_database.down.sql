@@ -1,0 +1,6 @@
+ALTER TABLE forms DROP CONSTRAINT IF EXISTS fk_forms_current_version;
+
+DROP TABLE IF EXISTS form_versions;
+DROP TABLE IF EXISTS forms;
+DROP TABLE IF EXISTS workspaces;
+DROP TABLE IF EXISTS agents;
