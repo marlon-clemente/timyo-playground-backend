@@ -3,6 +3,7 @@ package observability
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"go.opentelemetry.io/otel"
@@ -47,6 +48,10 @@ func Init(ctx context.Context, serviceName, endpoint, auth, org string, insecure
 	if err != nil {
 		return nil, err
 	}
+
+	// WithEndpoint expects host:port without scheme
+	endpoint = strings.TrimPrefix(endpoint, "https://")
+	endpoint = strings.TrimPrefix(endpoint, "http://")
 
 	// Prepare headers for OpenObserve
 	headers := map[string]string{}
@@ -104,5 +109,3 @@ func Init(ctx context.Context, serviceName, endpoint, auth, org string, insecure
 
 	return shutdown, nil
 }
-
-
